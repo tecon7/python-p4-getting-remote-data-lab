@@ -7,7 +7,14 @@ class GetRequester:
         self.url = url
 
     def get_response_body(self):
-        pass
+        url = 'https://learn-co-curriculum.github.io/json-site-example/endpoints/people.json'
+        response = requests.get(url)
+        return response.content
 
     def load_json(self):
-        pass
+        people_list = []
+        people = json.loads(self.get_response_body())
+        for name in people:
+            people_list.append(name)
+
+        return people_list
